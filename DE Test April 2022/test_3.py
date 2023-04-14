@@ -1,7 +1,6 @@
+"""Programme to count the sum of numbers in a time string"""
 import pytest
-# The below function doesn't work correctly. It should sum all the numbers at the
-# current time. For example, 01:02:03 should return 6. Improve and fix the function,
-# and write unit test(s) for it. Use any testing framework you're familiar with.
+
 
 def sum_current_time(time_str: str) -> int:
     """Sums up the numbers in the input time string, which should be in the format HH:MM:SS."""
@@ -25,29 +24,35 @@ def sum_current_time(time_str: str) -> int:
 
 
 def test_large_input():
+    """test 1"""
     time_str = "20:59:59"
     assert sum_current_time(time_str) == 138
 
 def test_midnight():
+    """test 2"""
     time_str = "00:00:00"
     assert sum_current_time(time_str) == 0
 
 def test_no_seconds():
+    """test 3"""
     time_str = "12:34"
     with pytest.raises(ValueError):
         assert sum_current_time(time_str) == "Input string must be in the format HH:MM:SS"
 
 def test_negative_input():
+    """test 4"""
     time_str = "-1:20:10"
     with pytest.raises(ValueError):
         sum_current_time(time_str)
 
 def test_float_input():
+    """test 5"""
     time_str = "2.5:45:30"
     with pytest.raises(ValueError):
         sum_current_time(time_str)
 
 def test_empty_input():
+    """test 6"""
     time_str = ""
     with pytest.raises(ValueError):
         sum_current_time(time_str)
@@ -55,4 +60,5 @@ def test_empty_input():
 
 
 print(sum_current_time("01:02:03"))
+
 
